@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +13,7 @@ import { CommonModule } from '@angular/common';
 export class AppComponent {
   title = 'protfolioTake2';
   
+  ngOnInit() {
+    initFlowbite();
+  }
 }
