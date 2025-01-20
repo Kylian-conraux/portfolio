@@ -11,7 +11,7 @@ import { initFlowbite } from 'flowbite';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'protfolioTake2';
+  title = 'Portfolio';
   
   ngOnInit() {
     initFlowbite();
