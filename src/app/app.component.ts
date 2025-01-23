@@ -13,6 +13,8 @@ import { initFlowbite } from 'flowbite';
 export class AppComponent {
   title = 'Portfolio';
 
+  
+
 
   ngOnInit() {
     initFlowbite();
@@ -63,4 +65,14 @@ export class AppComponent {
     return test;
   }
 
+
+  sendMail(): void {
+    if (this.checkForm()) {
+      const mail = document.getElementById('email') as HTMLInputElement;
+      const object = document.getElementById('objet') as HTMLInputElement;
+      const message = document.getElementById('message') as HTMLInputElement;
+
+      const mailto = `mailto:`;
+    }
+  }
 }
