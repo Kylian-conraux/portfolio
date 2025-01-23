@@ -6,9 +6,9 @@ import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 })
 export class EmailService {
 
-  private api_pubkey = "";
-  private service_id = "";
-  private template_id = "";
+  private api_pubkey = "TOTgGtcH4-Nigdt-D";
+  private service_id = "service_j7h0cua";
+  private template_id = "template_5w0nioi";
 
   constructor() {
     emailjs.init(this.api_pubkey);
