@@ -113,7 +113,7 @@ export class AppComponent {
   actionResponse(responseCode: number):void{
     Swal.fire({
       title: responseCode === 200 ? 'Message envoyé' : 'Erreur lors de l\'envoi',
-      text: responseCode === 200 ? 'Votre message a bien été envoyé' : 'Une erreur est survenue lors de l\'envoi de votre message. Veuillez réessayer ultérieurement',
+      text: responseCode === 200 ? 'Votre message a bien été envoyé' : 'Une erreur est survenue lors de l\'envoi de votre message. Veuillez réessayer ultérieurement. code: ' + responseCode,
       icon: responseCode === 200 ? 'success' : 'error',});
   }
 
