@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { initFlowbite } from 'flowbite';
 import { EmailService } from './service/email.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import Swal  from 'sweetalert2';
+
 
 @Component({
   selector: 'app-root',
@@ -29,6 +31,7 @@ export class AppComponent {
 
   ngOnInit() {
     initFlowbite();
+    
   }
 
 
@@ -83,10 +86,18 @@ export class AppComponent {
     if (this.checkForm()) {
       let validity = this.contactForm.status === "VALID";
       if (validity) {
+        const divContactForm = document.getElementById('div-contact-form') as HTMLDivElement;
+        const loading = document.getElementById('loading') as HTMLDivElement;
+        divContactForm.classList.add('hidden');
+        loading.classList.remove('hidden');
         this.emailService.sendEmail(this.contactForm.value).then((response) => {
-          console.log('SUCCESS!', response.status, response.text);
+          loading.classList.add('hidden');
+          divContactForm.classList.remove('hidden');
+          this.actionResponse(response.status);
         }, (err) => {
-          console.log('FAILED...', err);
+          this.actionResponse(err.status);
+          loading.classList.add('hidden');
+          divContactForm.classList.remove('hidden');
         });
       }
     }
@@ -98,5 +109,12 @@ export class AppComponent {
    * Je dois allez chercher les principaux codes d'erreur pour les afficher et tous les traiter
    * 
    */
+
+  actionResponse(responseCode: number):void{
+    Swal.fire({
+      title: responseCode === 200 ? 'Message envoyé' : 'Erreur lors de l\'envoi',
+      text: responseCode === 200 ? 'Votre message a bien été envoyé' : 'Une erreur est survenue lors de l\'envoi de votre message. Veuillez réessayer ultérieurement',
+      icon: responseCode === 200 ? 'success' : 'error',});
+  }
 
 }
