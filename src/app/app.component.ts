@@ -3,6 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { initFlowbite } from 'flowbite';
+import { EmailService } from './service/email.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +15,15 @@ import { initFlowbite } from 'flowbite';
 export class AppComponent {
   title = 'Portfolio';
 
-  
+  contactForm!: FormGroup;
+
+  constructor(private fb: FormBuilder ,private emailService: EmailService){
+    this.contactForm = this.fb.group({
+      email: ['', Validators.required, Validators.email],
+      objet: ['', Validators.required, Validators.maxLength(255)],
+      message: ['', Validators.required, Validators.maxLength(2000)]
+    });
+  }
 
 
   ngOnInit() {
