@@ -47,8 +47,6 @@ export class AppComponent {
 
   checkMessage(message: string): void {
     message = message.replace(/<[^>]*>/g, '');
-    //const messageRegex = /^[a-zA-Z0-9\s.,!?@#$%&*()_+:'"=/\r\n-]{1,2000}$/;
-    //return messageRegex.test(message);
   }
 
   highlightError(input: HTMLInputElement): void {
@@ -74,10 +72,6 @@ export class AppComponent {
       test = false;
     }
     this.checkMessage(message.value);
-  //  if (!this.checkMessage(message.value)) {
-   //   this.highlightError(message);
-   //   test = false;
-  //  }
     return test;
   }
 
@@ -102,13 +96,6 @@ export class AppComponent {
       }
     }
   }
-
-  /**
-   * J'ai ajouté un spinner pour montrer que le mail est en cours d'envoi
-   * Une fois l'envoie fini et le code retour reçu, j'affiche un message de succès ou d'erreur
-   * Je dois allez chercher les principaux codes d'erreur pour les afficher et tous les traiter
-   * 
-   */
 
   actionResponse(responseCode: number):void{
     Swal.fire({
